@@ -1,25 +1,23 @@
 import java.util.Date;
+import java.util.Random;
 
 public abstract class Usuario {
-    private long id;
+    private final long  id = new Random().nextLong();
     private String nome;
     private long cpf;
     private long rg;
     private Date dataNascimento;
     private Endereco endereco;
-    private Login login;
     private String telefone;
     private boolean moderador;
     
-    public Usuario(long id, String nome, long cpf, long rg, Date dataNascimento, Endereco endereco, Login login,
+    public Usuario(String nome, long cpf, long rg, Date dataNascimento, Endereco endereco,
             String telefone) {
-        this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.rg = rg;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
-        this.login = login;
         this.telefone = telefone;
         this.moderador = false;
     }
@@ -46,10 +44,6 @@ public abstract class Usuario {
 
     public Endereco getEndereco() {
         return endereco;
-    }
-
-    public Login getLogin() {
-        return login;
     }
 
     public String getTelefone() {

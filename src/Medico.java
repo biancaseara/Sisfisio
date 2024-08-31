@@ -4,9 +4,9 @@ public class Medico extends Usuario {
     private Especialidade especialidade;
     private String crm;
     
-    public Medico(long id, String nome, long cpf, long rg, Date dataNascimento, Endereco endereco, Login login,
+    public Medico(long id, String nome, long cpf, long rg, Date dataNascimento, Endereco endereco,
             String telefone, Especialidade especialidade, String crm) {
-        super(id, nome, cpf, rg, dataNascimento, endereco, login, telefone);
+        super(nome, cpf, rg, dataNascimento, endereco,telefone);
         this.especialidade = especialidade;
         this.crm = crm;
     }

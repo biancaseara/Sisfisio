@@ -1,25 +1,22 @@
 import java.util.Date;
 
 public class Consulta {
-    private long idConsulta;
-    private long idPaciente;
-    private long idMedico;
+    private int idConsulta;
+    private int idPaciente;
+    private int idMedico;
     private Status statusPaciente;
     private float valorConsulta;
-    private int numeroConsulta;
     private Date dataConsulta;
-    private String exercicios;
+    private String procedimentos;
     
-    public Consulta(long idConsulta, long idPaciente, long idMedico, Status statusPaciente, float valorConsulta,
-            int numeroConsulta, Date dataConsulta, String exercicios) {
+    public Consulta(int idConsulta, int idPaciente, int idMedico, Status statusPaciente, float valorConsulta, Date dataConsulta, String procedimentos) {
         this.idConsulta = idConsulta;
         this.idPaciente = idPaciente;
         this.idMedico = idMedico;
         this.statusPaciente = statusPaciente;
         this.valorConsulta = valorConsulta;
-        this.numeroConsulta = numeroConsulta;
         this.dataConsulta = dataConsulta;
-        this.exercicios = exercicios;
+        this.procedimentos = procedimentos;
     }
 
     public long getIdConsulta() {
@@ -50,14 +47,6 @@ public class Consulta {
         this.valorConsulta = valorConsulta;
     }
 
-    public int getNumeroConsulta() {
-        return numeroConsulta;
-    }
-
-    public void setNumeroConsulta(int numeroConsulta) {
-        this.numeroConsulta = numeroConsulta;
-    }
-
     public Date getDataConsulta() {
         return dataConsulta;
     }
@@ -66,11 +55,12 @@ public class Consulta {
         this.dataConsulta = dataConsulta;
     }
 
-    public String getExercicios() {
-        return exercicios;
+    public void setProcedimentos(String procedimentos) {
+        this.procedimentos = procedimentos;
+    }
+    
+    public String getProcedimentos() {
+        return procedimentos;
     }
 
-    public void setExercicios(String exercicios) {
-        this.exercicios = exercicios;
-    }
 }

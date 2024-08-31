@@ -1,72 +1,62 @@
 import java.util.Date;
 
 public class Paciente extends Usuario {
-    private String tipoSanguineo;
-    private String alergias;
-    private String comorbidade;
-    private String medicamentos;
-    private String historicoMedico;
-    private String historicoFamiliar;
+    private TipoSanguineo tipoSanguineo;
+    private String[] alergias;
+    private String[] comorbidades;
+    private String[] medicamentos;
+    private HistoricoFamiliar historicoFamiliar;
     
-    public Paciente(long id, String nome, long cpf, long rg, Date dataNascimento, Endereco endereco, Login login,
-            String telefone, String tipoSanguineo, String alergias, String comorbidade, String medicamentos,
-            String historicoMedico, String historicoFamiliar) {
-        super(id, nome, cpf, rg, dataNascimento, endereco, login, telefone);
+    public Paciente(String nome, long cpf, long rg, Date dataNascimento, Endereco endereco,String telefone, TipoSanguineo tipoSanguineo,
+                   String[] alergias, String[] comorbidades, String[] medicamentos, HistoricoFamiliar historicoFamiliar) {
+        super(nome, cpf, rg, dataNascimento, endereco, telefone);
         this.tipoSanguineo = tipoSanguineo;
         this.alergias = alergias;
-        this.comorbidade = comorbidade;
+        this.comorbidades = comorbidades;
         this.medicamentos = medicamentos;
-        this.historicoMedico = historicoMedico;
         this.historicoFamiliar = historicoFamiliar;
     }
 
-    public String getTipoSanguineo() {
+    public TipoSanguineo getTipoSanguineo() {
         return tipoSanguineo;
     }
 
-    public void setTipoSanguineo(String tipoSanguineo) {
+    public void setTipoSanguineo(TipoSanguineo tipoSanguineo) {
         this.tipoSanguineo = tipoSanguineo;
     }
 
-    public String getAlergias() {
+    public String[] getAlergias() {
         return alergias;
     }
 
-    public void setAlergias(String alergias) {
+    public void setAlergias(String[] alergias) {
         this.alergias = alergias;
     }
 
-    public String getComorbidade() {
-        return comorbidade;
+    public String[] getComorbidade() {
+        return this.comorbidades;
     }
 
-    public void setComorbidade(String comorbidade) {
-        this.comorbidade = comorbidade;
+    public void setComorbidade(String[] comorbidades) {
+        this.comorbidades = comorbidades;
     }
 
-    public String getMedicamentos() {
-        return medicamentos;
-    }
-
-    public void setMedicamentos(String medicamentos) {
+    public void setMedicamentos(String[] medicamentos) {
         this.medicamentos = medicamentos;
     }
 
-    public String getHistoricoMedico() {
-        return historicoMedico;
+    public String[] getMedicamentos() {
+        return medicamentos;
     }
 
-    public void setHistoricoMedico(String historicoMedico) {
-        this.historicoMedico = historicoMedico;
-    }
-
-    public String getHistoricoFamiliar() {
-        return historicoFamiliar;
-    }
-
-    public void setHistoricoFamiliar(String historicoFamiliar) {
+    public void setHistoricoFamiliar(HistoricoFamiliar historicoFamiliar) {
         this.historicoFamiliar = historicoFamiliar;
     }
+
+    public HistoricoFamiliar getHistoricoFamiliar() {
+        return historicoFamiliar;
+    }
+    
     
     
 }

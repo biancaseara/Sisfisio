@@ -2,10 +2,9 @@ import java.util.Date;
 
 public class Admin extends Usuario {
 
-
-    public Admin(long id, String nome, long cpf, long rg, Date dataNascimento, Endereco endereco, Login login,
+    public Admin(String nome, long cpf, long rg, Date dataNascimento, Endereco endereco,
             String telefone) {
-        super(id, nome, cpf, rg, dataNascimento, endereco, login, telefone);
+        super(nome, cpf, rg, dataNascimento, endereco, telefone);
     }
     
     public void criarUsuario(Usuario usuario) {
