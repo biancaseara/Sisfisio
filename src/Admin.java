@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class Admin extends Usuario {
     private List<Usuario> usuarios;
@@ -20,9 +21,19 @@ public class Admin extends Usuario {
     public void deletarUsuario(long id) {
         for (int i = 0; i < usuarios.size(); i++) {
             if (usuarios.get(i).getId() == id) {
-                // tem que checar se desejam mesmo remover 
-                usuarios.remove(i);
+                // vamo ter que deixar isso "agradavel" na interface grafica
+                Scanner inpt = new Scanner(System.in);
+                System.out.println("Deseja mesmo remover o usuário: " + usuarios.get(i).getNome() + " ?(S/N)");
+                String resp = inpt.next();
+                if (resp.equalsIgnoreCase("S")) {
+                    usuarios.remove(i);
+                    System.out.println("Usuário deletado com sucesso");
+                }
+                else{
+                    System.out.println("O usuário não foi deletado");
+                }
                 System.out.println();
+                inpt.close();
                 return;
             }
         }

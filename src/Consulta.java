@@ -1,18 +1,16 @@
 import java.util.Date;
+import java.util.Random;
 
 public class Consulta {
-    private int idConsulta;
-    private int idPaciente;
-    private int idMedico;
+    private final int idConsulta = new Random().nextInt(1000);
+    private final int idPaciente = new Random().nextInt(1000);
+    private final int idMedico = new Random().nextInt(1000);
     private Status statusPaciente;
     private float valorConsulta;
     private Date dataConsulta;
-    private String procedimentos;
+    private String[] procedimentos;
     
-    public Consulta(int idConsulta, int idPaciente, int idMedico, Status statusPaciente, float valorConsulta, Date dataConsulta, String procedimentos) {
-        this.idConsulta = idConsulta;
-        this.idPaciente = idPaciente;
-        this.idMedico = idMedico;
+    public Consulta(Status statusPaciente, float valorConsulta, Date dataConsulta, String[] procedimentos) {
         this.statusPaciente = statusPaciente;
         this.valorConsulta = valorConsulta;
         this.dataConsulta = dataConsulta;
@@ -55,11 +53,11 @@ public class Consulta {
         this.dataConsulta = dataConsulta;
     }
 
-    public void setProcedimentos(String procedimentos) {
+    public void setProcedimentos(String[] procedimentos) {
         this.procedimentos = procedimentos;
     }
     
-    public String getProcedimentos() {
+    public String[] getProcedimentos() {
         return procedimentos;
     }
 
