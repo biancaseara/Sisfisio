@@ -1,61 +1,63 @@
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
 public abstract class Usuario {
-    private final long  id = new Random().nextLong();
-    private String nome;
-    private long cpf;
-    private long rg;
-    private Date dataNascimento;
-    private Endereco endereco;
-    private String telefone;
-    private boolean moderador;
-    
-    public Usuario(String nome, long cpf, long rg, Date dataNascimento, Endereco endereco,
-            String telefone) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.rg = rg;
-        this.dataNascimento = dataNascimento;
-        this.endereco = endereco;
-        this.telefone = telefone;
-        this.moderador = false;
-    }
+   private final int id = new Random().nextInt(100);
+   private String nome;
+   private long cpf;
+   private long rg;
+   private Calendar dataNascimento;
+   private Endereco endereco;
+   private String telefone;
+   private boolean moderador;
 
-    public long getId() {
-        return id;
-    }
+   public Usuario(String nome, long cpf, long rg, Calendar dataNascimento, Endereco endereco, String telefone) {
+      this.nome = nome;
+      this.cpf = cpf;
+      this.rg = rg;
+      this.dataNascimento = dataNascimento;
+      this.endereco = endereco;
+      this.telefone = telefone;
+      this.moderador = false;
+   }
 
-    public String getNome() {
-        return nome;
-    }
+   public Usuario() {
+   }
 
-    public long getCpf() {
-        return cpf;
-    }
+   public int getId() {
+      return this.id;
+   }
 
-    public long getRg() {
-        return rg;
-    }
+   public String getNome() {
+      return this.nome;
+   }
 
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
+   public long getCpf() {
+      return this.cpf;
+   }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
+   public long getRg() {
+      return this.rg;
+   }
 
-    public String getTelefone() {
-        return telefone;
-    }
+   public Calendar getDataNascimento() {
+      return this.dataNascimento;
+   }
 
-    public void tornaModerador() {
-        this.moderador = true;
-    }
+   public Endereco getEndereco() {
+      return this.endereco;
+   }
 
-    public boolean isModerador() {
-        return moderador;
-    }
-    
+   public String getTelefone() {
+      return this.telefone;
+   }
+
+   public void tornaModerador() {
+      this.moderador = true;
+   }
+
+   public boolean isModerador() {
+      return this.moderador;
+   }
 }

@@ -1,31 +1,46 @@
-import java.util.Date;
-import java.util.Random;
+import java.util.*; // https://www.devmedia.com.br/trabalhando-com-as-classes-date-calendar-e-simpledateformat-em-java/27401
+
 
 public class Consulta {
     private final int idConsulta = new Random().nextInt(1000);
-    private final int idPaciente = new Random().nextInt(1000);
-    private final int idMedico = new Random().nextInt(1000);
+    private int idPaciente;
+    private int idMedico;
     private Status statusPaciente;
     private float valorConsulta;
-    private Date dataConsulta;
-    private String[] procedimentos;
+    private Calendar dataConsulta;
+    private ArrayList<Procedimentos> procedimentos;
     
-    public Consulta(Status statusPaciente, float valorConsulta, Date dataConsulta, String[] procedimentos) {
+    public Consulta(Status statusPaciente, float valorConsulta, Calendar dataConsulta, ArrayList<Procedimentos> procedimentos) {
         this.statusPaciente = statusPaciente;
         this.valorConsulta = valorConsulta;
         this.dataConsulta = dataConsulta;
         this.procedimentos = procedimentos;
     }
 
-    public long getIdConsulta() {
+    
+    public Consulta() {
+    }
+
+
+
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
+    }
+
+
+    public void setIdMedico(int idMedico) {
+        this.idMedico = idMedico;
+    }
+
+    public int getIdConsulta() {
         return idConsulta;
     }
 
-    public long getIdPaciente() {
+    public int getIdPaciente() {
         return idPaciente;
     }
 
-    public long getIdMedico() {
+    public int getIdMedico() {
         return idMedico;
     }
 
@@ -45,20 +60,34 @@ public class Consulta {
         this.valorConsulta = valorConsulta;
     }
 
-    public Date getDataConsulta() {
+    public Calendar getDataConsulta() {
         return dataConsulta;
     }
 
-    public void setDataConsulta(Date dataConsulta) {
+    public void setDataConsulta(Calendar dataConsulta) {
         this.dataConsulta = dataConsulta;
     }
 
-    public void setProcedimentos(String[] procedimentos) {
+    public void setProcedimentos(ArrayList<Procedimentos> procedimentos) {
         this.procedimentos = procedimentos;
     }
-    
-    public String[] getProcedimentos() {
+
+    public ArrayList<Procedimentos> getProcedimentos() {
         return procedimentos;
     }
+
+    public void agendarConsulta(Paciente paciente,Medico medico){
+        Procedimentos procedimento1  = new Procedimentos("Sessão de quiropraxia");
+        Procedimentos procedimento2 = new Procedimentos("Sessão de loucura");
+        ArrayList<Procedimentos> listaProcedimentos = new ArrayList<>();
+        listaProcedimentos.add(procedimento1);
+        listaProcedimentos.add(procedimento2);
+        Consulta consulta = new Consulta(paciente.getStatus_paciente(), 50, Calendar.getInstance(),listaProcedimentos);
+        consulta.setIdMedico(medico.getId());
+        consulta.setIdPaciente(paciente.getId());
+        
+        System.out.println("Consulta agendada com paciente: " + paciente.getNome() + " Sendo atendido pela(o) Dr. "  + medico.getNome() + " As " + Calendar.getInstance().getTime());
+    }
+    
 
 }
