@@ -1,61 +1,68 @@
-import java.util.Date;
+import java.text.DateFormat;
 import java.util.Random;
+import java.util.Calendar;
 
 public abstract class Usuario {
-    private final long  id = new Random().nextLong();
-    private String nome;
-    private long cpf;
-    private long rg;
-    private Date dataNascimento;
-    private Endereco endereco;
-    private String telefone;
-    private boolean moderador;
-    
-    public Usuario(String nome, long cpf, long rg, Date dataNascimento, Endereco endereco,
-            String telefone) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.rg = rg;
-        this.dataNascimento = dataNascimento;
-        this.endereco = endereco;
-        this.telefone = telefone;
-        this.moderador = false;
-    }
+   private final int id = new Random().nextInt(100);
+   private String nome;
+   private String cpf;
+   private String rg;
+   private Calendar dataNascimento;
+   private Endereco endereco;
+   private String telefone;
+   private boolean moderador;
+   private DateFormat formataData = DateFormat.getDateInstance();
 
-    public long getId() {
-        return id;
-    }
 
-    public String getNome() {
-        return nome;
-    }
+   public Usuario(String nome, String cpf, String rg, Calendar dataNascimento, Endereco endereco, String telefone) {
+      this.nome = nome;
+      this.cpf = cpf;
+      this.rg = rg;
+      this.dataNascimento = dataNascimento;
+      this.endereco = endereco;
+      this.telefone = telefone;
+      this.moderador = false;
+   }
 
-    public long getCpf() {
-        return cpf;
-    }
+   public Usuario() {
+   }
 
-    public long getRg() {
-        return rg;
-    }
+   public int getId() {
+      return this.id;
+   }
 
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
+   public String getNome() {
+      return this.nome;
+   }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
+   @SuppressWarnings("static-access")
+   public String getDataNascimento() {
+      return formataData.format(this.dataNascimento.getInstance().getTime());
+   }
 
-    public String getTelefone() {
-        return telefone;
-    }
+   public Endereco getEndereco() {
+      return this.endereco;
+   }
 
-    public void tornaModerador() {
-        this.moderador = true;
-    }
+   public String getTelefone() {
+      return this.telefone;
+   }
 
-    public boolean isModerador() {
-        return moderador;
-    }
-    
+   public void tornaModerador() {
+      this.moderador = true;
+   }
+
+   public boolean isModerador() {
+      return this.moderador;
+   }
+
+   public String getCpf() {
+      return cpf;
+   }
+
+   public String getRg() {
+      return rg;
+   }
+
+   
 }
