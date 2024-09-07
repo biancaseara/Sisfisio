@@ -1,18 +1,20 @@
-import java.util.Calendar;
-import java.util.Date;
+import java.text.DateFormat;
 import java.util.Random;
+import java.util.Calendar;
 
 public abstract class Usuario {
    private final int id = new Random().nextInt(100);
    private String nome;
-   private long cpf;
-   private long rg;
+   private String cpf;
+   private String rg;
    private Calendar dataNascimento;
    private Endereco endereco;
    private String telefone;
    private boolean moderador;
+   private DateFormat formataData = DateFormat.getDateInstance();
 
-   public Usuario(String nome, long cpf, long rg, Calendar dataNascimento, Endereco endereco, String telefone) {
+
+   public Usuario(String nome, String cpf, String rg, Calendar dataNascimento, Endereco endereco, String telefone) {
       this.nome = nome;
       this.cpf = cpf;
       this.rg = rg;
@@ -33,16 +35,9 @@ public abstract class Usuario {
       return this.nome;
    }
 
-   public long getCpf() {
-      return this.cpf;
-   }
-
-   public long getRg() {
-      return this.rg;
-   }
-
-   public Calendar getDataNascimento() {
-      return this.dataNascimento;
+   @SuppressWarnings("static-access")
+   public String getDataNascimento() {
+      return formataData.format(this.dataNascimento.getInstance().getTime());
    }
 
    public Endereco getEndereco() {
@@ -60,4 +55,14 @@ public abstract class Usuario {
    public boolean isModerador() {
       return this.moderador;
    }
+
+   public String getCpf() {
+      return cpf;
+   }
+
+   public String getRg() {
+      return rg;
+   }
+
+   
 }

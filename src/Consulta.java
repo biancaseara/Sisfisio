@@ -1,14 +1,17 @@
 import java.util.*; // https://www.devmedia.com.br/trabalhando-com-as-classes-date-calendar-e-simpledateformat-em-java/27401
+import java.text.DateFormat;
 
 
 public class Consulta {
-    private final int idConsulta = new Random().nextInt(1000);
+    private int idConsulta = new Random().nextInt(1000);
     private int idPaciente;
     private int idMedico;
     private Status statusPaciente;
     private float valorConsulta;
     private Calendar dataConsulta;
     private ArrayList<Procedimentos> procedimentos;
+    private DateFormat formataData = DateFormat.getDateInstance();
+    private DateFormat hora = DateFormat.getTimeInstance();
     
     public Consulta(Status statusPaciente, float valorConsulta, Calendar dataConsulta, ArrayList<Procedimentos> procedimentos) {
         this.statusPaciente = statusPaciente;
@@ -19,8 +22,8 @@ public class Consulta {
 
     
     public Consulta() {
-    }
 
+    }
 
 
     public void setIdPaciente(int idPaciente) {
@@ -35,6 +38,11 @@ public class Consulta {
     public int getIdConsulta() {
         return idConsulta;
     }
+    
+    private void setIdConsulta(int id){
+        this.idConsulta = id;
+    }
+    
 
     public int getIdPaciente() {
         return idPaciente;
@@ -60,8 +68,11 @@ public class Consulta {
         this.valorConsulta = valorConsulta;
     }
 
-    public Calendar getDataConsulta() {
-        return dataConsulta;
+    public Date getDataConsulta() {
+        if (this.dataConsulta != null){
+            return dataConsulta.getTime();
+        }
+        return null;
     }
 
     public void setDataConsulta(Calendar dataConsulta) {
@@ -82,11 +93,23 @@ public class Consulta {
         ArrayList<Procedimentos> listaProcedimentos = new ArrayList<>();
         listaProcedimentos.add(procedimento1);
         listaProcedimentos.add(procedimento2);
-        Consulta consulta = new Consulta(paciente.getStatus_paciente(), 50, Calendar.getInstance(),listaProcedimentos);
+        Calendar horario = Calendar.getInstance();
+        Consulta consulta = new Consulta(paciente.getStatus_paciente(), 50, horario,listaProcedimentos);
         consulta.setIdMedico(medico.getId());
         consulta.setIdPaciente(paciente.getId());
         
-        System.out.println("Consulta agendada com paciente: " + paciente.getNome() + " Sendo atendido pela(o) Dr. "  + medico.getNome() + " As " + Calendar.getInstance().getTime());
+        System.out.println("Consulta agendada com paciente: " + paciente.getNome() + " Sendo atendido pela(o) Dr. "  + medico.getNome() + " No dia  " + formataData.format(horario.getTime()) +  " As " +  hora.format(horario.getTime()));
+    }
+
+    public void cancelarConsulta(Paciente paciente, Medico medico){
+        System.out.println("Cancelando consulta do paciente " + paciente.getNome() + " Que seria feita pelo(a) Dr. " + medico.getNome() + " No dia: " + formataData.format(this.getDataConsulta()));
+        this.setDataConsulta(null);
+        this.setIdMedico(-1);
+        this.setIdPaciente(-1);
+        this.setIdConsulta(-1);
+        this.setProcedimentos(null);
+        this.setStatusPaciente(null);
+        this.setValorConsulta(0);
     }
     
 

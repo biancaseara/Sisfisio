@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Admin extends Usuario {
     private List<Usuario> usuarios;
 
-    public Admin(String nome, long cpf, long rg, Calendar dataNascimento, Endereco endereco,
+    public Admin(String nome, String cpf, String rg, Calendar dataNascimento, Endereco endereco,
             String telefone) {
         super(nome, cpf, rg, dataNascimento, endereco, telefone);
         this.usuarios = new ArrayList<>();
@@ -34,6 +34,8 @@ public class Admin extends Usuario {
                 System.out.println("Deseja mesmo remover o usuário: " + usuarios.get(i).getNome() + " ?(S/N)");
                 String resp = inpt.next();
                 if (resp.equalsIgnoreCase("S")) {
+                    Usuario usuario = usuarios.get(i);
+                    usuario = null;
                     usuarios.remove(i);
                     System.out.println("Usuário deletado com sucesso");
                 }

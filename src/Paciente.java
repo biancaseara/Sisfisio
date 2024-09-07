@@ -8,7 +8,7 @@ public class Paciente extends Usuario {
 
     
   
-    public Paciente(String nome, long cpf, long rg, Calendar dataNascimento, Endereco endereco, String telefone,
+    public Paciente(String nome, String cpf, String rg, Calendar dataNascimento, Endereco endereco, String telefone,
             TipoSanguineo tipoSanguineo, ArrayList<Alergias> alergias, ArrayList<Comorbidades> comorbidades,
             ArrayList<Medicamentos> medicamentos, Status status_paciente) {
         super(nome, cpf, rg, dataNascimento, endereco, telefone);
@@ -61,6 +61,17 @@ public class Paciente extends Usuario {
     public void setStatus_paciente(Status status_paciente) {
         this.status_paciente = status_paciente;
     }
+
+    @Override
+    public String toString() {
+        return "Paciente [tipoSanguineo=" + tipoSanguineo + ", alergias=" + alergias + ", comorbidades=" + comorbidades
+                + ", medicamentos=" + medicamentos + ", status_paciente=" + status_paciente + ", getNome()=" + getNome()
+                + ", getDataNascimento()=" + getDataNascimento() + ", getEndereco()=" + getEndereco()
+                + ", getTelefone()=" + getTelefone() + ", getCpf()=" + getCpf() + ", getRg()=" + getRg() + "]";
+    }
+
+
+    
 
 
     
