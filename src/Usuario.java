@@ -1,6 +1,7 @@
 import java.text.DateFormat;
 import java.util.Random;
 import java.util.Calendar;
+import java.util.ArrayList;
 
 public abstract class Usuario {
    private final int id = new Random().nextInt(100);
@@ -11,16 +12,18 @@ public abstract class Usuario {
    private Endereco endereco;
    private String telefone;
    private boolean moderador;
+   private String senha;
    private DateFormat formataData = DateFormat.getDateInstance();
 
 
-   public Usuario(String nome, String cpf, String rg, Calendar dataNascimento, Endereco endereco, String telefone) {
+   public Usuario(String nome, String cpf, String rg, Calendar dataNascimento, Endereco endereco, String telefone, String senha) {
       this.nome = nome;
       this.cpf = cpf;
       this.rg = rg;
       this.dataNascimento = dataNascimento;
       this.endereco = endereco;
       this.telefone = telefone;
+      this.senha = senha;
       this.moderador = false;
    }
 
@@ -64,5 +67,12 @@ public abstract class Usuario {
       return rg;
    }
 
-   
+   public String getSenha() {
+      return senha;
+   }
+
+   public void setSenha(String senha) {
+      this.senha = senha;
+   }
+
 }

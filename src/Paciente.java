@@ -5,13 +5,11 @@ public class Paciente extends Usuario {
     private ArrayList<Comorbidades> comorbidades;
     private ArrayList<Medicamentos> medicamentos;
     private Status status_paciente;
-
-    
   
-    public Paciente(String nome, String cpf, String rg, Calendar dataNascimento, Endereco endereco, String telefone,
+    public Paciente(String nome, String cpf, String rg, Calendar dataNascimento, Endereco endereco, String telefone, String senha,
             TipoSanguineo tipoSanguineo, ArrayList<Alergias> alergias, ArrayList<Comorbidades> comorbidades,
             ArrayList<Medicamentos> medicamentos, Status status_paciente) {
-        super(nome, cpf, rg, dataNascimento, endereco, telefone);
+        super(nome, cpf, rg, dataNascimento, endereco, telefone, senha);
         this.tipoSanguineo = tipoSanguineo;
         this.alergias = alergias;
         this.comorbidades = comorbidades;
@@ -70,11 +68,5 @@ public class Paciente extends Usuario {
                 + ", getTelefone()=" + getTelefone() + ", getCpf()=" + getCpf() + ", getRg()=" + getRg() + "]";
     }
 
-
-    
-
-
-    
-    
     
 }

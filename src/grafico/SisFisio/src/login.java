@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.util.List;
+
+
 /**
  *
  * @author Usuário
@@ -136,19 +139,22 @@ public class login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String login = jTextField1.getText();
         String senha = new String(jPasswordField1.getPassword());
-
-        // for (Usuario usuario : usuarios) {
-            
-        // }
-        String loginCorreto = "admin";
-        String senhaCorreta = "admin";
         
-        // TODO add your handling code here:
-        if (login.equals(loginCorreto) && senha.equals(senhaCorreta)) {
-            menu log_login = new menu();
-            this.dispose();
-            log_login.setVisible(true);
-        } else {
+        List<Usuario> usuarios = Admin.getUsuarios();
+
+        boolean autenticado = false;
+
+        for (Usuario usuario : usuarios) {
+            if (login.equals(usuario.getCpf()) && senha.equals(String.valueOf(usuario.getSenha()))) {
+                autenticado = true;
+                menu log_login = new menu();
+                this.dispose();
+                log_login.setVisible(true);
+                break;
+            }
+        }
+
+        if (!autenticado) {
             javax.swing.JOptionPane.showMessageDialog(this, "Login ou senha incorretos", "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
         
