@@ -8,7 +8,6 @@
  * @author Usuário
  */
 public class login extends javax.swing.JFrame {
-
     /**
      * Creates new form login
      */
@@ -135,10 +134,23 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String login = jTextField1.getText();
+        String senha = new String(jPasswordField1.getPassword());
+
+        // for (Usuario usuario : usuarios) {
+            
+        // }
+        String loginCorreto = "admin";
+        String senhaCorreta = "admin";
+        
         // TODO add your handling code here:
-        menu log_login = new menu();
-        this.dispose();
-        log_login.setVisible(true);
+        if (login.equals(loginCorreto) && senha.equals(senhaCorreta)) {
+            menu log_login = new menu();
+            this.dispose();
+            log_login.setVisible(true);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Login ou senha incorretos", "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
