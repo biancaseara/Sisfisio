@@ -7,16 +7,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Admin extends Usuario {
-    private List<Usuario> usuarios;
+    private static List<Usuario> usuarios = new ArrayList<>();
 
     public Admin(String nome, String cpf, String rg, Calendar dataNascimento, Endereco endereco,
-            String telefone) {
-        super(nome, cpf, rg, dataNascimento, endereco, telefone);
-        this.usuarios = new ArrayList<>();
+            String telefone, String senha) {
+        super(nome, cpf, rg, dataNascimento, endereco, telefone, senha);
         this.tornaModerador();
-    }
-
-    
+    }   
     
     public Admin() {
         
@@ -65,20 +62,23 @@ public class Admin extends Usuario {
         
         System.out.print("Telefone: ");
         String telefone = inpt.next();
+        
+        System.out.print("Senha: ");
+        String senha = inpt.next();
 
         try {
             if (usuario instanceof Medico) {
                 System.out.print("CRM: ");
                 String crm = inpt.next();
     
-                Medico medico = new Medico(nome, cpf, rg, dataPraPassarNoConstructor, endereco, telefone, Especialidade.FISIOTERAPIA_RESPIRATORIA, crm);
+                Medico medico = new Medico(nome, cpf, rg, dataPraPassarNoConstructor, endereco, telefone, senha, Especialidade.FISIOTERAPIA_RESPIRATORIA, crm);
                 usuarios.add(medico);
             } else { // if (usuario instanceof Paciente)
                 ArrayList<Alergias> alergias = new ArrayList<>();
                 ArrayList<Comorbidades> comorbidades = new ArrayList<>();
                 ArrayList<Medicamentos> medicamentos = new ArrayList<>();
     
-                Paciente paciente = new Paciente(nome, cpf, rg, dataPraPassarNoConstructor, endereco, telefone, TipoSanguineo.O_POSITIVO, alergias, comorbidades, medicamentos, Status.EM_TRATAMENTO);
+                Paciente paciente = new Paciente(nome, cpf, rg, dataPraPassarNoConstructor, endereco, telefone, senha, TipoSanguineo.O_POSITIVO, alergias, comorbidades, medicamentos, Status.EM_TRATAMENTO);
                 usuarios.add(paciente);
                 System.out.println("Usuário criado com sucesso!");
             }
@@ -131,6 +131,8 @@ public class Admin extends Usuario {
         }
     }
 
-   
+   public static List<Usuario> getUsuarios() {
+        return usuarios;
+   }
 
 }
