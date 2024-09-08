@@ -1,5 +1,8 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,9 +24,67 @@ public class Admin extends Usuario {
 
 
     public void criarUsuario(Usuario usuario) {
-        usuarios.add(usuario);
-        System.out.println("Usuário criado com sucesso!");
-        // https://www.alura.com.br/artigos/como-converter-string-para-date-em-java#:~:text=Para%20converter%20essa%20dataRecebida%20para,contenha%20dia%2Fm%C3%AAs%2Fano.
+        Scanner inpt = new Scanner(System.in);
+        
+        System.out.print("Nome: ");
+        String nome = inpt.next(); 
+        
+        System.out.print("CPF: ");
+        String cpf = inpt.next();
+
+        System.out.print("RG: ");
+        String rg = inpt.next();
+        System.out.println("Data nascimento(dd/mm/aaaa): ");
+        String dataNascimento = inpt.next();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+        Date dataFormatada = null;
+        try {
+            dataFormatada = formato.parse(dataNascimento);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Calendar dataPraPassarNoConstructor = Calendar.getInstance();
+        dataPraPassarNoConstructor.setTimeInMillis(dataFormatada.getTime());
+
+        System.out.print("CEP: ");
+        String cep = inpt.next();
+
+        System.out.print("Rua: ");
+        String rua = inpt.next();
+
+        System.out.print("Bairro: ");
+        String bairro = inpt.next();
+
+        System.out.print("Complemento: ");
+        String complemento = inpt.next();
+
+        System.out.print("Número da casa: ");
+        int numeroCasa = inpt.nextInt();
+
+        Endereco endereco = new Endereco(cep, rua, bairro, complemento, numeroCasa);
+        
+        System.out.print("Telefone: ");
+        String telefone = inpt.next();
+
+        try {
+            if (usuario instanceof Medico) {
+                System.out.print("CRM: ");
+                String crm = inpt.next();
+    
+                Medico medico = new Medico(nome, cpf, rg, dataPraPassarNoConstructor, endereco, telefone, Especialidade.FISIOTERAPIA_RESPIRATORIA, crm);
+                usuarios.add(medico);
+            } else { // if (usuario instanceof Paciente)
+                ArrayList<Alergias> alergias = new ArrayList<>();
+                ArrayList<Comorbidades> comorbidades = new ArrayList<>();
+                ArrayList<Medicamentos> medicamentos = new ArrayList<>();
+    
+                Paciente paciente = new Paciente(nome, cpf, rg, dataPraPassarNoConstructor, endereco, telefone, TipoSanguineo.O_POSITIVO, alergias, comorbidades, medicamentos, Status.EM_TRATAMENTO);
+                usuarios.add(paciente);
+                System.out.println("Usuário criado com sucesso!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
     }
 
     public void deletarUsuario(long id) {
