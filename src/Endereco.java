@@ -1,11 +1,14 @@
+/**
+ * Classe que representa um endereço completo.
+ */
 public class Endereco {
-    private String cep;
+    private int cep; // Código de Endereçamento Postal (CEP)
     private String rua;
     private String bairro;
     private String complemento;
     private int numeroCasa;
-    
-    public Endereco(String cep, String rua, String bairro, String complemento, int numeroCasa) {
+
+    public Endereco(int cep, String rua, String bairro, String complemento, int numeroCasa) {
         this.cep = cep;
         this.rua = rua;
         this.bairro = bairro;
@@ -13,12 +16,13 @@ public class Endereco {
         this.numeroCasa = numeroCasa;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    // Getters e Setters
+    public int getCep() {
+        return cep;
     }
 
-    public String getCep() {
-        return cep;
+    public void setCep(int cep) {
+        this.cep = cep;
     }
 
     public String getRua() {
@@ -52,5 +56,4 @@ public class Endereco {
     public void setNumeroCasa(int numeroCasa) {
         this.numeroCasa = numeroCasa;
     }
-    
 }

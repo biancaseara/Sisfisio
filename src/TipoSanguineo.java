@@ -1,3 +1,6 @@
+/**
+ * Enumeração que representa os tipos sanguíneos.
+ */
 public enum TipoSanguineo {
     A_POSITIVO,
     A_NEGATIVO,
@@ -6,7 +9,5 @@ public enum TipoSanguineo {
     AB_POSITIVO,
     AB_NEGATIVO,
     O_POSITIVO,
-    O_NEGATIVO;
-
-    
+    O_NEGATIVO; 
 }

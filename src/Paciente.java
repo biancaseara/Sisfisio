@@ -1,22 +1,22 @@
-import java.util.*;;
+import java.util.*;
+
+/**
+ * Classe que representa um paciente, estendendo a classe Usuario e adicionando informações específicas de saúde.
+ */
 public class Paciente extends Usuario {
     private TipoSanguineo tipoSanguineo;
-    private ArrayList<Alergias>alergias;
-    private ArrayList<Comorbidades> comorbidades;
-    private ArrayList<Medicamentos> medicamentos;
+    private ArrayList<Alergias> alergias; // Lista de alergias do paciente
+    private ArrayList<Comorbidades> comorbidades; // Lista de comorbidades do paciente
+    private ArrayList<Medicamentos> medicamentos; // Lista de medicamentos do paciente
     private Status status_paciente;
-  
-    public Paciente(String nome, String cpf, String rg, Calendar dataNascimento, Endereco endereco, String telefone, String senha,
-            TipoSanguineo tipoSanguineo, ArrayList<Alergias> alergias, ArrayList<Comorbidades> comorbidades,
-            ArrayList<Medicamentos> medicamentos, Status status_paciente) {
+
+    public Paciente(String nome, String cpf, String rg, Calendar dataNascimento, Endereco endereco, String telefone, String senha) {
         super(nome, cpf, rg, dataNascimento, endereco, telefone, senha);
-        this.tipoSanguineo = tipoSanguineo;
-        this.alergias = alergias;
-        this.comorbidades = comorbidades;
-        this.medicamentos = medicamentos;
-        this.status_paciente = status_paciente;
     }
 
+    /**
+     * Construtor padrão da classe Paciente.
+     */
     public Paciente() {
     }
 
@@ -60,6 +60,9 @@ public class Paciente extends Usuario {
         this.status_paciente = status_paciente;
     }
 
+    /**
+     * Retorna uma representação em String do paciente.
+     */
     @Override
     public String toString() {
         return "Paciente [tipoSanguineo=" + tipoSanguineo + ", alergias=" + alergias + ", comorbidades=" + comorbidades
@@ -67,6 +70,4 @@ public class Paciente extends Usuario {
                 + ", getDataNascimento()=" + getDataNascimento() + ", getEndereco()=" + getEndereco()
                 + ", getTelefone()=" + getTelefone() + ", getCpf()=" + getCpf() + ", getRg()=" + getRg() + "]";
     }
-
-    
 }
