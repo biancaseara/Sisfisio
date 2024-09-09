@@ -3,16 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Usuário
  */
+
 public class ADMIN_delete_popup extends javax.swing.JFrame {
+    public static int idASerExcluido;
 
     /**
      * Creates new form login
      */
-    public ADMIN_delete_popup() {
+    public ADMIN_delete_popup(int id) {
+        this.idASerExcluido = id;
         initComponents();
     }
 
@@ -171,11 +176,16 @@ public class ADMIN_delete_popup extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        ArrayList<Usuario> usuarios = ADMIN_delete.usuarios;
+        for (Usuario usuario : usuarios) {
+            if (usuario.getId() == idASerExcluido) {
+                usuarios.remove(usuario);
+            }
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton2MouseClicked
 
