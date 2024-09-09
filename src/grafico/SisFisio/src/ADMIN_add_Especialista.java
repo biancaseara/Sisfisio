@@ -62,7 +62,7 @@ public class ADMIN_add_Especialista extends javax.swing.JFrame {
 
         jLabel1.setText("jLabel1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -210,7 +210,7 @@ public class ADMIN_add_Especialista extends javax.swing.JFrame {
 
         Paciente_nome_tag2.setText("CRM");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ACUPUNTURA", "FISIOTERAPIA_AQUATICA", "FISIOTERAPIA_CARDIOVASCULAR", "FISIOTERAPIA_DERMATOFUNCIONAL" ,"FISIOTERAPIA_ESPORTIVA", "GERONTOLOGIA", "FISIOTERAPIA_DO_TRABALHO", "FISIOTERAPIA_NEUROFUNCIONAL", "FISIOTERAPIA_ONCOLOGIA", "ISIOTERAPIA_RESPIRATORIA", "FISIOTERAPIA_TRAUMATO_ORTOPEDICA", "OSTEOPATIA" , "QUIROPRAXIA", "SAUDE_DA_MULHER","TERAPIA_INTENSIVA"}));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

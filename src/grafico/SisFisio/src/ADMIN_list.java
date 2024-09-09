@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Usuário
@@ -46,7 +49,7 @@ public class ADMIN_list extends javax.swing.JFrame {
 
         jLabel3.setText("jLabel3");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -60,25 +63,41 @@ public class ADMIN_list extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Especialistas");
+        ArrayList<Usuario> usuarios =  (ArrayList<Usuario>) Admin.getUsuarios();
+        ArrayList<String> pacientesArray = new ArrayList<>();
+        ArrayList<String> adminsArray = new ArrayList<>();
+        ArrayList<String> medicosArray = new ArrayList<>();
+        for (Usuario usuario : usuarios) {
+            if (usuario instanceof Paciente) {
+                pacientesArray.add(usuario.getNome());
+            }
+            else if (usuario instanceof Admin) {
+                adminsArray.add(usuario.getNome());
+            }
+            else{
+                medicosArray.add(usuario.getNome());
+            }
+        }
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+          
+            public int getSize() { 
+                return pacientesArray.size(); 
+            }
+            public String getElementAt(int i) { return pacientesArray.get(i); 
+            }
         });
         jScrollPane1.setViewportView(jList1);
 
         jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public int getSize() { return medicosArray.size(); }
+            public String getElementAt(int i) { return medicosArray.get(i); }
         });
         jScrollPane2.setViewportView(jList2);
 
         jList3.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public int getSize() { return adminsArray.size(); }
+            public String getElementAt(int i) { return adminsArray.get(i); }
         });
         jScrollPane3.setViewportView(jList3);
 

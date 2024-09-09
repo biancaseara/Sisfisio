@@ -39,7 +39,7 @@ public class ADMIN_menu extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         SisFisio_topname = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));

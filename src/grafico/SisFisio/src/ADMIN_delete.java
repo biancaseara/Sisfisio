@@ -3,11 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.util.ArrayList;
+
+import javax.swing.ComboBoxModel;
+
 /**
  *
  * @author Usuário
  */
 public class ADMIN_delete extends javax.swing.JFrame {
+    public static ArrayList<Usuario> usuarios =  (ArrayList<Usuario>) Admin.getUsuarios();
+    public static ArrayList<String> usuStrings = new ArrayList<>();
+    public static int id;
 
     /**
      * Creates new form login
@@ -42,7 +49,7 @@ public class ADMIN_delete extends javax.swing.JFrame {
 
         jLabel3.setText("jLabel3");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -50,18 +57,19 @@ public class ADMIN_delete extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(245, 245, 245));
 
         jPanel3.setBackground(new java.awt.Color(226, 234, 252));
-
+        for (Usuario usuario : usuarios) {
+            usuStrings.add(usuario.getNome() + " " + usuario.getId());
+        }
         jList4.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public int getSize() { return usuStrings.size(); }
+            public String getElementAt(int i) { return usuStrings.get(i); }
         });
         jScrollPane4.setViewportView(jList4);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setText("Usuários e ID's");
+        jLabel5.setText("ID's");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(usuStrings.toArray(new String[0])));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Qual usuário gostaria de remover?");
@@ -203,7 +211,11 @@ public class ADMIN_delete extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        ADMIN_delete_popup yasure = new ADMIN_delete_popup();
+        Object object = evt.getSource();
+        if (object instanceof ComboBoxModel) {
+            id = ((int)((ComboBoxModel)object).getSelectedItem());
+        }
+        ADMIN_delete_popup yasure = new ADMIN_delete_popup(id);
         yasure.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
 
