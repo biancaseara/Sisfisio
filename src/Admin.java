@@ -37,21 +37,27 @@ public class Admin extends Usuario {
         Endereco endereco = new Endereco(cep, rua, bairro, complemento, numeroCasa);
         String senha = "senha123";
         
-        // Converta a string dataNascimento para um objeto Calendar
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        Date dataFormatada = null;
-        try {
-            dataFormatada = formato.parse(dataNascimento);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        
-        Calendar dataNascimentoCalendar = Calendar.getInstance();
-        dataNascimentoCalendar.setTime(dataFormatada);
+        // Método que converte a string dataNascimento para um objeto Calendar
+        Calendar dataNascimentoCalendar = converterStringParaCalendar(dataNascimento);
     
         // Cria um novo paciente com os dados fornecidos
         Paciente paciente = new Paciente(nome, cpf, rg, dataNascimentoCalendar, endereco, telefone, senha);
         usuarios.add(paciente); // Adiciona o paciente à lista de usuários
+    }
+
+    /*
+     * Criar um novo especialista com os dados fornecidos e adiciona à lista de usuários.
+    */
+    public static void criarEspecialista(String nome, String cpf, String rg, int numeroCasa, String rua, String complemento, int cep, String bairro, String dataNascimento, String telefone, String crm) {
+        Endereco endereco = new Endereco(cep, rua, bairro, complemento, numeroCasa);
+        String senha = "senha123";
+        
+        // Método que converta a string dataNascimento para um objeto Calendar
+        Calendar dataNascimentoCalendar = converterStringParaCalendar(dataNascimento);
+    
+        // Cria um novo paciente com os dados fornecidos
+        Medico medico = new Medico(nome, cpf, rg, dataNascimentoCalendar, endereco, telefone, senha, crm);
+        usuarios.add(medico); // Adiciona o paciente à lista de usuários
     }
 
     /**
@@ -116,5 +122,24 @@ public class Admin extends Usuario {
     */
    public static List<Usuario> getUsuarios() {
         return usuarios;
-   }  
+   }
+
+   /*
+   * Converta a string dataNascimento para um objeto Calendar
+   */
+  private static Calendar converterStringParaCalendar(String dataNascimento) {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date dataFormatada = null;
+        try {
+            dataFormatada = formato.parse(dataNascimento);
+        } catch (ParseException e) {
+            e.printStackTrace(); // Trata a exceção de parsing
+        }
+        
+        Calendar dataNascimentoCalendar = Calendar.getInstance();
+        if (dataFormatada != null) {
+            dataNascimentoCalendar.setTime(dataFormatada);
+        }
+        return dataNascimentoCalendar;
+    }
 }

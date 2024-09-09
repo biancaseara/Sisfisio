@@ -7,9 +7,8 @@ public class Medico extends Usuario {
     private Especialidade especialidade;
     private String crm; // Número do CRM do médico
 
-    public Medico(String nome, String cpf, String rg, Calendar dataNascimento, Endereco endereco, String telefone, String senha, Especialidade especialidade, String crm) {
+    public Medico(String nome, String cpf, String rg, Calendar dataNascimento, Endereco endereco, String telefone, String senha, String crm) {
         super(nome, cpf, rg, dataNascimento, endereco, telefone, senha);
-        this.especialidade = especialidade;
         this.crm = crm;
     }
 
