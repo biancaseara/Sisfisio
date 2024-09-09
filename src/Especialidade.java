@@ -1,3 +1,6 @@
+/**
+ * Enum que representa diferentes especialidades na área de fisioterapia e saúde.
+ */
 public enum Especialidade {
     ACUPUNTURA("Envolve a aplicação de agulhas em pontos específicos do corpo para aliviar a dor e promover a saúde geral."),
     FISIOTERAPIA_AQUATICA("Fisioterapeutas aquáticos usam técnicas terapêuticas em piscinas para tratar uma variedade de condições musculares e ortopédicas."),
@@ -17,14 +20,15 @@ public enum Especialidade {
 
     private String descricao;
 
+    /**
+     * Construtor da enumeração Especialidade.
+     */
     private Especialidade(String descricao){
         this.descricao = descricao;
     }
 
+    // Getters
     public String getDescricao() {
         return descricao;
     }
-
-    
-
 }

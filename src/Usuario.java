@@ -1,21 +1,25 @@
 import java.text.DateFormat;
 import java.util.Random;
 import java.util.Calendar;
-import java.util.ArrayList;
 
+/**
+ * Classe abstrata que representa um usuário com informações básicas.
+ */
 public abstract class Usuario {
-   private final int id = new Random().nextInt(100);
+   private final int id = new Random().nextInt(100); // Identificador único do usuário
    private String nome;
    private String cpf;
    private String rg;
    private Calendar dataNascimento;
    private Endereco endereco;
    private String telefone;
-   private boolean moderador;
+   private boolean moderador; // Indica se o usuário é um moderador
    private String senha;
-   private DateFormat formataData = DateFormat.getDateInstance();
+   private DateFormat formataData = DateFormat.getDateInstance(); // Formato para exibir datas
 
-
+   /**
+    * Construtor da classe Usuario.
+    */
    public Usuario(String nome, String cpf, String rg, Calendar dataNascimento, Endereco endereco, String telefone, String senha) {
       this.nome = nome;
       this.cpf = cpf;
@@ -27,20 +31,29 @@ public abstract class Usuario {
       this.moderador = false;
    }
 
+   /**
+    * Construtor padrão da classe Usuario.
+    */
    public Usuario() {
    }
 
+   // Getters e Setters
+
+   /**
+    * Retorna a data de nascimento formatada como uma String.
+    * @return Data de nascimento formatada.
+    */
+    @SuppressWarnings("static-access")
+    public String getDataNascimento() {
+       return formataData.format(this.dataNascimento.getInstance().getTime());
+    }
+   
    public int getId() {
       return this.id;
    }
 
    public String getNome() {
       return this.nome;
-   }
-
-   @SuppressWarnings("static-access")
-   public String getDataNascimento() {
-      return formataData.format(this.dataNascimento.getInstance().getTime());
    }
 
    public Endereco getEndereco() {
